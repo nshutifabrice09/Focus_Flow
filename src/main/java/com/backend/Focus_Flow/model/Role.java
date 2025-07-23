@@ -1,2 +1,6 @@
-package com.backend.Focus_Flow.model;public enum Role {
+package com.backend.Focus_Flow.model;
+
+public enum Role {
+    ADMIN,
+    USER
 }
