@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,8 +30,14 @@ public class User {
     private Role role;
 
     @OneToMany(mappedBy = "assignedTo")
-    private List<Task> assignedTasks;
+    private List<Task> assignedTasks = new ArrayList<>();
 
     @OneToMany(mappedBy = "createdBy")
-    private List<Project> createdProjects;
+    private List<Project> createdProjects = new ArrayList<>();
+
+    @OneToMany(mappedBy = "createdBy")
+    private List<Task> createdTasks = new ArrayList<>();
+
+    @OneToMany(mappedBy = "author")
+    private List<Comment> comments = new ArrayList<>();
 }
