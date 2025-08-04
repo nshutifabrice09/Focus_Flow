@@ -19,9 +19,8 @@ public class Label {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
-    @ManyToMany(mappedBy = "labels")
-    private Set<Task> tasks = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "task_id")
+    private Task task;
 }
