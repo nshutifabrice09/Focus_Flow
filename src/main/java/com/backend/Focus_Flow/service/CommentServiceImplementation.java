@@ -1,6 +1,8 @@
 package com.backend.Focus_Flow.service;
 
 import com.backend.Focus_Flow.model.Comment;
+import com.backend.Focus_Flow.model.Task;
+import com.backend.Focus_Flow.model.User;
 import com.backend.Focus_Flow.repository.CommentRepository;
 import com.backend.Focus_Flow.repository.TaskRepository;
 import com.backend.Focus_Flow.repository.UserRepository;
@@ -26,26 +28,36 @@ public class CommentServiceImplementation implements CommentService{
 
     @Override
     public Comment saveComment(Comment comment, Long authorId, Long taskId) {
-        return null;
+        User user = userRepository.findUserById(userRepository);
+        Task task = taskRepository.findTaskById(taskId);
+        comment.setAuthor(user);
+        comment.setTask(task);
+        return commentRepository.save(comment);
     }
 
     @Override
     public List<Comment> getAllComments() {
-        return null;
+        return commentRepository.findAll();
     }
 
     @Override
     public Comment getComment(Long id) {
-        return null;
+        return commentRepository.findCommentById(id);
     }
 
     @Override
     public Comment updateComment(Long id, Comment comment) {
+        Comment existComment = commentRepository.findCommentById(id);
+        if(existComment != null){
+            existComment.setMessage(comment.getMessage());
+            existComment.setCreatedAt(comment.getCreatedAt());
+            return commentRepository.save(existComment);
+        }
         return null;
     }
 
     @Override
     public void removeComment(Long id) {
-
+        commentRepository.deleteById(id);
     }
 }
