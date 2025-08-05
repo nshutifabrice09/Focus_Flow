@@ -54,12 +54,11 @@ public class Task {
     @JoinColumn(name = "created_by")
     private User createdBy;
 
-    @ManyToMany
-    @JoinTable(name = "task_labels",
-            joinColumns = @JoinColumn(name = "task_id"),
-            inverseJoinColumns = @JoinColumn(name = "label_id"))
-    private Set<Label> labels = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "label_id")
+    private Label label;
 
-    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> comments = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "comment_id")
+    private Comment comment;
 }

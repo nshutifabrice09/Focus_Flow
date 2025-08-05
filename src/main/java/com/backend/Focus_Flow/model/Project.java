@@ -38,4 +38,6 @@ public class Project {
     @JoinColumn(name = "task_id")
     private Task task;
 
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    private List<Task> tasks = new ArrayList<>();
 }
