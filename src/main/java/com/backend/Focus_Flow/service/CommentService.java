@@ -7,7 +7,7 @@ import java.util.List;
 public interface CommentService {
 
     Comment saveComment(Comment comment,Long authorId, Long taskId);
-    List<Comment> getComments();
+    List<Comment> getAllComments();
     Comment getComment(Long id);
     Comment updateComment(Long id, Comment comment);
     void removeComment(Long id);
