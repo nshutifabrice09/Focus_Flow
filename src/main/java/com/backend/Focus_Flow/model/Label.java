@@ -3,9 +3,6 @@ package com.backend.Focus_Flow.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.HashSet;
-import java.util.Set;
-
 @Entity
 @Table(name = "labels")
 @Data
