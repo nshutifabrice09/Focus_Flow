@@ -28,7 +28,7 @@ public class CommentServiceImplementation implements CommentService{
 
     @Override
     public Comment saveComment(Comment comment, Long authorId, Long taskId) {
-        User user = userRepository.findUserById(userRepository);
+        User user = userRepository.findUserById(authorId);
         Task task = taskRepository.findTaskById(taskId);
         comment.setAuthor(user);
         comment.setTask(task);
