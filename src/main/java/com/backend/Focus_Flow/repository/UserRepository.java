@@ -11,4 +11,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findCreatedById(Long createdBy);
 
     User findMemberById(Long memberId);
+
+    User findAssignedById(Long assignedTo);
 }
