@@ -5,6 +5,8 @@ import com.backend.Focus_Flow.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin("http://localhost:3000")
 public class CommentController {
@@ -20,5 +22,10 @@ public class CommentController {
     public Comment saveComment(@RequestBody Comment comment, @PathVariable ("authorId") Long authorId,
                                @PathVariable("taskId") Long taskId){
         return commentService.saveComment(comment, authorId, taskId);
+    }
+
+    @GetMapping("/comments")
+    public List<Comment> commentList(){
+        return commentService.getAllComments();
     }
 }
