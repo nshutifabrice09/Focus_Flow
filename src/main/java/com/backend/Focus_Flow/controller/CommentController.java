@@ -28,4 +28,19 @@ public class CommentController {
     public List<Comment> commentList(){
         return commentService.getAllComments();
     }
+
+    @GetMapping("/comment/{id}")
+    public Comment getComment(@PathVariable ("id") Long id){
+        return commentService.getComment(id);
+    }
+
+    @PutMapping("/update/comment/{id}")
+    public Comment updateComment(@PathVariable("id") Long id, @RequestBody Comment comment){
+        return commentService.updateComment(id, comment);
+    }
+
+    @DeleteMapping("/delete/comment/{id}")
+    public void deleteComment(@PathVariable ("id") Long id){
+        commentService.removeComment(id);
+    }
 }
