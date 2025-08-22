@@ -78,4 +78,4 @@ public class UserDTO {
             this.commentIds = commentIds;
         }
     }
-    
+
